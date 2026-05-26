@@ -1,0 +1,53 @@
+BÀI 18: TÌM KIẾM TRÊN MA TRẬN 2 CHIỀU (PYTHON)
+
+1. Mã nguồn chương trình
+
+def tim_kiem_matran(M, x):
+    # Duyệt qua từng dòng của ma trận (i là chỉ số dòng)
+    for i in range(len(M)):
+        # Duyệt qua từng cột của dòng hiện tại (j là chỉ số cột)
+        for j in range(len(M[i])):
+            # Nếu tìm thấy phần tử bằng x tại dòng i, cột j
+            if M[i][j] == x:
+                return i, j  # Trả về bộ vị trí (dòng, cột) và dừng hàm
+                
+    # Trả về (-1, -1) nếu duyệt hết ma trận mà không tìm thấy x
+    return -1, -1
+
+# --- Chương trình chính (Main) ---
+
+# Nhập số dòng và số cột của ma trận
+so_dong = int(input("Nhập số dòng của ma trận: "))
+M = []
+
+# Nhập dữ liệu cho từng dòng
+for i in range(so_dong):
+    dong_string = input(f"Nhập các phần tử của dòng {i} (cách nhau bằng dấu cách): ")
+    dong = [int(item) for item in dong_string.split()]
+    M.append(dong)
+
+# Nhập giá trị cần tìm x
+x = int(input("Nhập giá trị x cần tìm: "))
+
+# Gọi hàm tìm kiếm và lưu kết quả
+dong_tim_thay, cot_tim_thay = tim_kiem_matran(M, x)
+
+# In kết quả ra màn hình
+print(f"\nMa trận vừa nhập: {M}")
+if dong_tim_thay != -1:
+    print(f"Tìm thấy {x} tại vị trí: (dòng {dong_tim_thay}, cột {cot_tim_thay})")
+else:
+    print(f"Không tìm thấy {x} trong ma trận (Kết quả: (-1, -1))")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập số dòng của ma trận: 3
+Nhập các phần tử của dòng 0 (cách nhau bằng dấu cách): 5 8 1
+Nhập các phần tử của dòng 1 (cách nhau bằng dấu cách): 3 9 7
+Nhập các phần tử của dòng 2 (cách nhau bằng dấu cách): 2 6 4
+Nhập giá trị x cần tìm: 9
+
+Kết quả hiển thị:
+Ma trận vừa nhập: [[5, 8, 1], [3, 9, 7], [2, 6, 4]]
+Tìm thấy 9 tại vị trí: (dòng 1, cột 1)

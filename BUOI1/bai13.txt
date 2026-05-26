@@ -1,0 +1,47 @@
+BÀI 13: TÌM KIẾM TRÊN CHUỖI KHÔNG PHÂN BIỆT HOA THƯỜNG (PYTHON)
+
+1. Mã nguồn chương trình
+
+def tim_ten_sinh_vien(ds, ten_can_tim):
+    # Chuẩn hóa tên cần tìm thành chữ thường và xóa khoảng trắng thừa
+    ten_chuan_hoa = ten_can_tim.strip().lower()
+    
+    # Duyệt tuyến tính qua danh sách tên sinh viên
+    for i in range(len(ds)):
+        # Chuẩn hóa tên sinh viên hiện tại thành chữ thường để so sánh
+        if ds[i].strip().lower() == ten_chuan_hoa:
+            return i  # Trả về chỉ số tìm thấy đầu tiên
+            
+    # Trả về -1 nếu duyệt hết danh sách mà không tìm thấy
+    return -1
+
+# --- Chương trình chính (Main) ---
+
+# Nhập danh sách tên sinh viên (cách nhau bằng dấu phẩy)
+input_string = input("Nhập danh sách tên sinh viên (cách nhau bằng dấu phẩy): ")
+ds = [ten.strip() for ten in input_string.split(",")]
+
+# Nhập tên sinh viên cần tìm kiếm
+ten_can_tim = input("Nhập tên sinh viên cần tìm: ")
+
+# Gọi hàm tìm kiếm và lưu kết quả
+vi_tri = tim_ten_sinh_vien(ds, ten_can_tim)
+
+# In kết quả ra màn hình
+print(f"\nDanh sách sinh viên: {ds}")
+print(f"Tên cần tìm: '{ten_can_tim}'")
+if vi_tri != -1:
+    print(f"Tìm thấy tại vị trí chỉ số: {vi_tri}")
+else:
+    print(f"Không tìm thấy sinh viên này trong danh sách (Kết quả: -1)")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập danh sách tên sinh viên (cách nhau bằng dấu phẩy): An, Bình, Châu
+Nhập tên sinh viên cần tìm: an
+
+Kết quả hiển thị:
+Danh sách sinh viên: ['An', 'Bình', 'Châu']
+Tên cần tìm: 'an'
+Tìm thấy tại vị trí chỉ số: 0

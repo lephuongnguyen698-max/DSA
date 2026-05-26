@@ -1,0 +1,53 @@
+BÀI 12: TÌM MIN VÀ MAX TRONG MỘT LẦN DUYỆT (PYTHON)
+
+1. Mã nguồn chương trình
+
+def tim_min_max(a):
+    # Nếu mảng rỗng, trả về None cho tất cả các giá trị
+    if len(a) == 0:
+        return None, -1, None, -1
+        
+    # Giả định phần tử đầu tiên (chỉ số 0) vừa là min vừa là max
+    val_min = a[0]
+    vi_tri_min = 0
+    val_max = a[0]
+    vi_tri_max = 0
+    
+    # Chỉ duyệt mảng DUY NHẤT một lần từ phần tử thứ hai (chỉ số 1)
+    for i in range(1, len(a)):
+        # Kiểm tra để cập nhật giá trị lớn nhất
+        if a[i] > val_max:
+            val_max = a[i]
+            vi_tri_max = i
+        # Kiểm tra để cập nhật giá trị nhỏ nhất
+        elif a[i] < val_min:
+            val_min = a[i]
+            vi_tri_min = i
+            
+    # Trả về kết quả đồng thời của cả min và max
+    return val_min, vi_tri_min, val_max, vi_tri_max
+
+# --- Chương trình chính (Main) ---
+
+# Nhập mảng từ bàn phím (các số cách nhau bởi dấu cách)
+input_string = input("Nhập các phần tử của mảng (cách nhau bằng dấu cách): ")
+a = [int(item) for item in input_string.split()]
+
+# Gọi hàm tìm kiếm đồng thời
+v_min, p_min, v_max, p_max = tim_min_max(a)
+
+# In kết quả ra màn hình
+if v_min is not None:
+    print(f"Giá trị nhỏ nhất: {v_min} (tại chỉ số i = {p_min})")
+    print(f"Giá trị lớn nhất: {v_max} (tại chỉ số i = {p_max})")
+else:
+    print("Mảng rỗng.")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập các phần tử của mảng: 12 3 9 1 5 8 14
+
+Kết quả hiển thị:
+Giá trị nhỏ nhất: 1 (tại chỉ số i = 3)
+Giá trị lớn nhất: 14 (tại chỉ số i = 6)

@@ -1,0 +1,36 @@
+BÀI 7: KIỂM TRA TỒN TẠI (PYTHON)
+
+1. Mã nguồn chương trình
+
+def ton_tai(a, x):
+    # Duyệt qua từng phần tử trong mảng a
+    for element in a:
+        # Nếu tìm thấy phần tử bằng x, trả về True và dừng hàm
+        if element == x:
+            return True
+    # Trả về False nếu đã duyệt hết mảng mà không tìm thấy x
+    return False
+
+# --- Chương trình chính (Main) ---
+
+# Nhập mảng từ bàn phím (các số cách nhau bởi dấu cách)
+input_string = input("Nhập các phần tử của mảng (cách nhau bằng dấu cách): ")
+a = [int(item) for item in input_string.split()]
+
+# Nhập giá trị cần kiểm tra x
+x = int(input("Nhập giá trị x cần kiểm tra: "))
+
+# Gọi hàm kiểm tra và in kết quả phù hợp
+if ton_tai(a, x):
+    print(f"Kết quả: True ({x} có tồn tại trong mảng)")
+else:
+    print(f"Kết quả: False ({x} không tồn tại trong mảng)")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập các phần tử của mảng: 7 3 9 12 5 8 1
+Nhập giá trị x cần kiểm tra: 5
+
+Kết quả hiển thị:
+Kết quả: True (5 có tồn tại trong mảng)

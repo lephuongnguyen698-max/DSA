@@ -1,0 +1,107 @@
+BÀI 20: BÀI TOÁN TỔNG HỢP — QUẢN LÝ DANH BẠ (PYTHON)
+
+1. Mã nguồn chương trình
+
+def them_lien_he(danh_ba, ten, sdt):
+    # Kiểm tra xem tên đã tồn tại trong danh bạ chưa
+    for lh in danh_ba:
+        if lh["ten"].strip().lower() == ten.strip().lower():
+            return False # Trùng tên, không thêm mới
+            
+    # Nếu chưa tồn tại, thêm liên hệ mới vào danh sách
+    danh_ba.append({"ten": ten.strip(), "sdt": sdt.strip()})
+    return True
+
+def tim_sdt_theo_ten(danh_ba, ten_can_tim):
+    ten_chuan_hoa = ten_can_tim.strip().lower()
+    # Duyệt tuyến tính để tìm số điện thoại theo tên
+    for lh in danh_ba:
+        if lh["ten"].lower() == ten_chuan_hoa:
+            return lh["sdt"]
+    return None
+
+def tim_ten_theo_sdt(danh_ba, sdt_can_tim):
+    sdt_chuan_hoa = sdt_can_tim.strip()
+    # Duyệt tuyến tính để tìm tên theo số điện thoại
+    for lh in danh_ba:
+        if lh["sdt"] == sdt_chuan_hoa:
+            return lh["ten"]
+    return None
+
+def dem_dau_so(danh_ba, dau_so):
+    dau_so_chuan = dau_so.strip()
+    count = 0
+    # Duyệt tuyến tính và kiểm tra tiền tố của số điện thoại
+    for lh in danh_ba:
+        if lh["sdt"].startswith(dau_so_chuan):
+            count += 1
+    return count
+
+# --- Chương trình chính với Menu điều khiển ---
+def main():
+    # Khởi tạo danh bạ mẫu ban đầu
+    danh_ba = [
+        {"ten": "Nguyen Van An", "sdt": "0901234567"},
+        {"ten": "Le Thi Binh", "sdt": "0918888888"},
+        {"ten": "Tran Duc Chau", "sdt": "0909999999"}
+    ]
+    
+    while True:
+        print("\n" + "="*10 + " QUẢN LÝ DANH BẠ " + "="*10)
+        print("1. Thêm liên hệ mới")
+        print("2. Tìm số điện thoại theo tên")
+        print("3. Tìm tên theo số điện thoại")
+        print("4. Đếm số liên hệ theo đầu số")
+        print("5. Hiển thị toàn bộ danh bạ")
+        print("6. Thoát")
+        
+        luachon = input("Chọn chức năng (1-6): ").strip()
+        
+        if luachon == "1":
+            ten = input("Nhập họ tên: ")
+            sdt = input("Nhập số điện thoại: ")
+            if them_lien_he(danh_ba, ten, sdt):
+                print("[THÀNH CÔNG] Đã thêm liên hệ thành công.")
+            else:
+                print("[THẤT BẠI] Tên liên hệ này đã tồn tại.")
+                
+        elif luachon == "2":
+            ten = input("Nhập tên cần tìm số điện thoại: ")
+            sdt = tim_sdt_theo_ten(danh_ba, ten)
+            if sdt:
+                print(f"-> Số điện thoại của '{ten}' là: {sdt}")
+            else:
+                print(f"-> Không tìm thấy liên hệ nào có tên: '{ten}'")
+                
+        elif luachon == "3":
+            sdt = input("Nhập số điện thoại cần tìm tên: ")
+            ten = tim_ten_theo_sdt(danh_ba, sdt)
+            if ten:
+                print(f"-> Chủ nhân của số điện thoại {sdt} là: {ten}")
+            else:
+                print(f"-> Không tìm thấy tên cho số điện thoại: {sdt}")
+                
+        elif luachon == "4":
+            dau_so = input("Nhập đầu số cần đếm (ví dụ 090): ")
+            so_luong = dem_dau_so(danh_ba, dau_so)
+            print(f"-> Có {so_luong} liên hệ có số điện thoại bắt đầu bằng đầu số '{dau_so}'")
+            
+        elif luachon == "5":
+            print("\n--- DANH SÁCH LIÊN HỆ ---")
+            for idx, lh in enumerate(danh_ba, start=1):
+                print(f"{idx}. {lh['ten']}: {lh['sdt']}")
+                
+        elif luachon == "6":
+            print("Đã thoát chương trình quản lý danh bạ. Tạm biệt!")
+            break
+        else:
+            print("[LỖI] Lựa chọn không hợp lệ, vui lòng chọn lại từ 1 đến 6.")
+
+if __name__ == "__main__":
+    main()
+
+2. Ví dụ chạy chương trình
+
+Chọn chức năng (1-6): 4
+Nhập đầu số cần đếm (ví dụ 090): 090
+-> Có 2 liên hệ có số điện thoại bắt đầu bằng đầu số '090'

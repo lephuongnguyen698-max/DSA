@@ -1,0 +1,83 @@
+BÀI 3: ĐẾM SỐ PHÉP SO SÁNH
+
+Cho mảng:
+A = [7, 3, 9, 12, 5, 8, 1]
+
+Mảng có 7 phần tử, chỉ số từ 0 đến 6.
+
+------------------------------------------------------------
+
+a) Tìm x = 7
+
+Các bước so sánh:
+- A[0] == 7 -> đúng
+
+Thuật toán dừng ngay.
+
+Số phép so sánh:
+1 phép so sánh
+
+------------------------------------------------------------
+
+b) Tìm x = 1
+
+Các bước so sánh:
+- A[0] == 1 -> sai
+- A[1] == 1 -> sai
+- A[2] == 1 -> sai
+- A[3] == 1 -> sai
+- A[4] == 1 -> sai
+- A[5] == 1 -> sai
+- A[6] == 1 -> đúng
+
+Thuật toán dừng tại vị trí cuối mảng.
+
+Số phép so sánh:
+7 phép so sánh
+
+------------------------------------------------------------
+
+c) Tìm x = 100
+
+Các bước so sánh:
+- A[0] == 100 -> sai
+- A[1] == 100 -> sai
+- A[2] == 100 -> sai
+- A[3] == 100 -> sai
+- A[4] == 100 -> sai
+- A[5] == 100 -> sai
+- A[6] == 100 -> sai
+
+Không tìm thấy giá trị 100 trong mảng.
+
+Số phép so sánh:
+7 phép so sánh
+
+------------------------------------------------------------
+
+Bảng tổng hợp
+
++-------------------+----------------------+
+| Giá trị cần tìm x | Số phép so sánh      |
++-------------------+----------------------+
+|         7         |          1           |
+|         1         |          7           |
+|        100        |          7           |
++-------------------+----------------------+
+
+------------------------------------------------------------
+
+Nhận xét
+
+- Phần tử càng nằm gần đầu mảng thì số phép so sánh càng ít.
+- Phần tử càng nằm gần cuối mảng thì số phép so sánh càng nhiều.
+- Nếu phần tử không tồn tại trong mảng, thuật toán phải duyệt hết toàn bộ mảng.
+
+Trường hợp tốt nhất:
+- Phần tử nằm ở đầu mảng.
+- Chỉ cần 1 phép so sánh.
+
+Trường hợp xấu nhất:
+- Phần tử nằm ở cuối mảng hoặc không tồn tại.
+- Cần tối đa n phép so sánh
+  (n là số phần tử của mảng).

@@ -1,0 +1,56 @@
+BÀI 19: TÌM KIẾM THEO KHÓA TRÊN DỮ LIỆU CÓ CẤU TRÚC (PYTHON)
+
+1. Mã nguồn chương trình (Sử dụng danh sách các Dictionary)
+
+def tim_sinh_vien_theo_ma(ds_sinh_vien, ma_can_tim):
+    # Chuẩn hóa mã cần tìm (xóa khoảng trắng, chuyển thành chữ hoa)
+    ma_chuan_hoa = ma_can_tim.strip().upper()
+    
+    # Duyệt tuyến tính qua từng sinh viên trong danh sách
+    for sv in ds_sinh_vien:
+        # So sánh mã sinh viên hiện tại với mã cần tìm
+        if sv["ma_sv"].strip().upper() == ma_chuan_hoa:
+            return sv  # Trả về dictionary thông tin sinh viên nếu tìm thấy
+            
+    # Trả về None nếu đi hết danh sách mà không tìm thấy
+    return None
+
+# --- Chương trình chính (Main) ---
+
+# Khởi tạo danh sách sinh viên làm mẫu (dữ liệu có cấu trúc)
+ds_sinh_vien = [
+    {"ma_sv": "SV01", "ho_ten": "Nguyen Van An", "dtb": 8.5},
+    {"ma_sv": "SV02", "ho_ten": "Le Thi Binh", "dtb": 7.2},
+    {"ma_sv": "SV03", "ho_ten": "Tran Duc Chau", "dtb": 9.0}
+]
+
+print("=== DANH SÁCH SINH VIÊN HIỆN CÓ ===")
+for sv in ds_sinh_vien:
+    print(f"Mã: {sv['ma_sv']} | Họ tên: {sv['ho_ten']} | ĐTB: {sv['dtb']}")
+print("-" * 40)
+
+# Nhập mã sinh viên cần tìm từ bàn phím
+ma_input = input("Nhập mã sinh viên cần tìm kiếm: ")
+
+# Gọi hàm tìm kiếm
+sv_tim_thay = tim_sinh_vien_theo_ma(ds_sinh_vien, ma_input)
+
+# In kết quả kiểm tra ra màn hình
+if sv_tim_thay is not None:
+    print("\n[KẾT QUẢ] Đã tìm thấy sinh viên:")
+    print(f"- Mã SV: {sv_tim_thay['ma_sv']}")
+    print(f"- Họ và tên: {sv_tim_thay['ho_ten']}")
+    print(f"- Điểm trung bình: {sv_tim_thay['dtb']}")
+else:
+    print(f"\n[THÔNG BÁO] Không tìm thấy sinh viên nào có mã: {ma_input}")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập mã sinh viên cần tìm kiếm: sv02
+
+Kết quả hiển thị:
+[KẾT QUẢ] Đã tìm thấy sinh viên:
+- Mã SV: SV02
+- Họ và tên: Le Thi Binh
+- Điểm trung bình: 7.2

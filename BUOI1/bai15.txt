@@ -1,0 +1,47 @@
+BÀI 15: TÌM SỐ NGUYÊN TỐ ĐẦU TIÊN (PYTHON)
+
+1. Mã nguồn chương trình
+
+def la_so_nguyen_to(n):
+    # Hàm phụ kiểm tra một số có phải số nguyên tố hay không
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def tim_so_nguyen_to_dau_tien(a):
+    # Duyệt tuyến tính qua từng phần tử và vị trí trong mảng
+    for i in range(len(a)):
+        # Nếu phần tử tại vị trí i là số nguyên tố
+        if la_so_nguyen_to(a[i]):
+            return a[i], i  # Trả về đồng thời giá trị và vị trí
+            
+    # Trả về None và -1 nếu mảng không có số nguyên tố nào
+    return None, -1
+
+# --- Chương trình chính (Main) ---
+
+# Nhập mảng từ bàn phím (các số cách nhau bởi dấu cách)
+input_string = input("Nhập các phần tử của mảng (cách nhau bằng dấu cách): ")
+a = [int(item) for item in input_string.split()]
+
+# Gọi hàm tìm số nguyên tố và lưu kết quả
+gia_tri, vi_tri = tim_so_nguyen_to_dau_tien(a)
+
+# In kết quả ra màn hình
+print(f"\nMảng vừa nhập: {a}")
+if vi_tri != -1:
+    print(f"Số nguyên tố đầu tiên là {gia_tri} tại vị trí chỉ số: {vi_tri}")
+else:
+    print("Mảng không có số nguyên tố nào.")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập các phần tử của mảng (cách nhau bằng dấu cách): 4 6 9 7 11
+
+Kết quả hiển thị:
+Mảng vừa nhập:
+Số nguyên tố đầu tiên là 7 tại vị trí chỉ số: 3

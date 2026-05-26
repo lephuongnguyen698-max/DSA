@@ -1,0 +1,39 @@
+BÀI 6: HÀM TÌM KIẾM CƠ BẢN (PYTHON)
+
+1. Mã nguồn chương trình
+
+def linear_search(a, x):
+    # Duyệt qua từng chỉ số i từ 0 đến cuối mảng a
+    for i in range(len(a)):
+        # Nếu tìm thấy phần tử bằng x, trả về chỉ số i ngay lập tức
+        if a[i] == x:
+            return i
+    # Trả về -1 nếu duyệt hết mảng mà không tìm thấy x
+    return -1
+
+# --- Chương trình chính (Main) ---
+
+# Nhập mảng từ bàn phím (các số cách nhau bởi dấu cách)
+input_string = input("Nhập các phần tử của mảng (cách nhau bằng dấu cách): ")
+a = [int(item) for item in input_string.split()]
+
+# Nhập giá trị cần tìm x
+x = int(input("Nhập giá trị x cần tìm: "))
+
+# Gọi hàm tìm kiếm và lưu kết quả
+vi_tri = linear_search(a, x)
+
+# In kết quả ra màn hình
+if vi_tri != -1:
+    print(f"Tìm thấy {x} tại vị trí đầu tiên là chỉ số: {vi_tri}")
+else:
+    print(f"Không tìm thấy {x} trong mảng (Kết quả: -1)")
+
+2. Ví dụ chạy chương trình
+
+Dữ liệu nhập:
+Nhập các phần tử của mảng: 7 3 9 12 5 8 1
+Nhập giá trị x cần tìm: 5
+
+Kết quả hiển thị:
+Tìm thấy 5 tại vị trí đầu tiên là chỉ số: 4
