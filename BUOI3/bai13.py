@@ -1,0 +1,15 @@
+def bubble_sort_stable(a):
+    n = len(a)
+
+    for i in range(n):
+        for j in range(n - 1 - i):
+            # So sánh theo khóa (phần tử đầu tiên)
+            if a[j][0] > a[j + 1][0]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+
+    return a
+
+
+a = [(2, 'a'), (1, 'b'), (2, 'c')]
+
+print(bubble_sort_stable(a))
