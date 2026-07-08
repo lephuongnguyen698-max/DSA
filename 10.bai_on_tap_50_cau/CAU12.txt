@@ -1,0 +1,5 @@
+Định nghĩa: Thuật toán sắp xếp ổn định (stable) là thuật toán giữ nguyên thứ tự tương đối của các phần tử có giá trị bằng nhau sau khi sắp xếp.
+Phân loại 3 thuật toán:
+-Bubble Sort: Ổn định (Vì ta chỉ đổi chỗ khi $a[j] > a[j+1]$, nếu bằng nhau ta không đổi).
+-Insertion Sort: Ổn định (Vòng lặp dịch chuyển dừng lại ngay khi gặp phần tử bằng với key, giữ nguyên key ở phía sau).
+-Selection Sort: Không ổn định (Phép hoán đổi phần tử nhỏ nhất với phần tử ở đầu đoạn có thể nhảy cóc qua và phá vỡ thứ tự của các phần tử ở giữa).
